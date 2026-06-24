@@ -6,7 +6,10 @@ export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       { title: "Riyaa's World 🌸 — a little universe by Tanishq" },
-      { name: "description", content: "A private universe built for one girl in this whole world — Riyaa." },
+      {
+        name: "description",
+        content: "A private universe built for one girl in this whole world — Riyaa.",
+      },
     ],
   }),
   component: RiyaaWorld,
@@ -75,10 +78,10 @@ function HeartGate({ onUnlock }: { onUnlock: () => void }) {
         "I called you by mistake",
         "I typed 'bhi' instead of 'nhi'",
         "I forgot to reply",
-        "I sent the wrong sticker"
+        "I sent the wrong sticker",
       ],
       correct: 1,
-    }
+    },
   ];
 
   const fail = (msg: string) => {
@@ -88,7 +91,11 @@ function HeartGate({ onUnlock }: { onUnlock: () => void }) {
   };
 
   const checkName = () => {
-    const ok = name.trim().toLowerCase().replace(/[^a-z]/g, "").startsWith("riya");
+    const ok = name
+      .trim()
+      .toLowerCase()
+      .replace(/[^a-z]/g, "")
+      .startsWith("riya");
     if (!ok) return fail("This little universe belongs to one girl only 🌸");
     setWhisper(null);
     setStep("date");
@@ -170,10 +177,9 @@ function HeartGate({ onUnlock }: { onUnlock: () => void }) {
             >
               <div className="rounded-2xl bg-blush/30 border border-rose/20 p-5 text-center">
                 <p className="font-display text-lg leading-relaxed text-foreground/85">
-                  Before you step inside, my love,
-                  there's something I want you to feel. <br />
-                  A few little memories, a few pieces of my heart,
-                  carefully kept here just for you. <br />
+                  Before you step inside, my love, there's something I want you to feel. <br />A few
+                  little memories, a few pieces of my heart, carefully kept here just for you.{" "}
+                  <br />
                   Take your time, betuuu... every moment ahead was made with love 💌
                 </p>
               </div>
@@ -194,7 +200,9 @@ function HeartGate({ onUnlock }: { onUnlock: () => void }) {
               exit={{ opacity: 0, x: -24 }}
               className="mt-8 space-y-4"
             >
-              <p className="text-center text-sm text-muted-foreground uppercase tracking-widest">Door 1 of 4</p>
+              <p className="text-center text-sm text-muted-foreground uppercase tracking-widest">
+                Door 1 of 4
+              </p>
               <h2 className="text-2xl text-center font-display">Whisper your name, my love…</h2>
               <input
                 value={name}
@@ -221,7 +229,9 @@ function HeartGate({ onUnlock }: { onUnlock: () => void }) {
               exit={{ opacity: 0, x: -24 }}
               className="mt-8 space-y-4"
             >
-              <p className="text-center text-sm text-muted-foreground uppercase tracking-widest">Door 2 of 4</p>
+              <p className="text-center text-sm text-muted-foreground uppercase tracking-widest">
+                Door 2 of 4
+              </p>
               <h2 className="text-2xl text-center font-display">
                 The day my whole world quietly changed…
               </h2>
@@ -269,7 +279,9 @@ function HeartGate({ onUnlock }: { onUnlock: () => void }) {
               <p className="text-center text-sm text-muted-foreground uppercase tracking-widest">
                 Door 3 of 4 · {quizIndex + 1}/{quiz.length}
               </p>
-              <h2 className="text-2xl text-center font-display leading-snug">{quiz[quizIndex].q}</h2>
+              <h2 className="text-2xl text-center font-display leading-snug">
+                {quiz[quizIndex].q}
+              </h2>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
                 {quiz[quizIndex].options.map((o, i) => (
                   <button
@@ -292,27 +304,29 @@ function HeartGate({ onUnlock }: { onUnlock: () => void }) {
               exit={{ opacity: 0, y: -12 }}
               className="mt-8 space-y-5"
             >
-              <p className="text-center text-sm text-muted-foreground uppercase tracking-widest">Door 4 of 4</p>
-              <h2 className="text-2xl text-center font-display">One tiny promise before you enter…</h2>
+              <p className="text-center text-sm text-muted-foreground uppercase tracking-widest">
+                Door 4 of 4
+              </p>
+              <h2 className="text-2xl text-center font-display">
+                One tiny promise before you enter…
+              </h2>
               <div className="rounded-2xl bg-blush/30 border border-rose/20 p-5 text-center space-y-3">
                 <p className="font-display leading-relaxed">
-                  ✋ With my hand on my heart,<br />I, <b>RIYA JHA</b>, do solemnly swear that:
-                  <br /><br />
-
+                  ✋ With my hand on my heart,
+                  <br />
+                  I, <b>RIYA JHA</b>, do solemnly swear that:
+                  <br />
+                  <br />
                   💌 I will read every page slowly and carefully.
                   <br />
-
                   😊 I will smile at the cute memories.
                   <br />
-
                   😂 I will not judge the extra cheesy parts too harshly.
                   <br />
-
                   🥺 I will remember every moment that made us <i>us</i>.
                   <br />
-
-                  ❤️ And above all, I will never forget that I am loved,
-                  missed, cherished, and adored more than words can explain.
+                  ❤️ And above all, I will never forget that I am loved, missed, cherished, and
+                  adored more than words can explain.
                   <br />
                 </p>
               </div>
@@ -369,9 +383,7 @@ function HeartGate({ onUnlock }: { onUnlock: () => void }) {
           )}
         </AnimatePresence>
 
-        {whisper && (
-          <p className="mt-5 text-center text-base text-rose font-script">{whisper}</p>
-        )}
+        {whisper && <p className="mt-5 text-center text-base text-rose font-script">{whisper}</p>}
       </motion.div>
     </div>
   );
@@ -503,7 +515,9 @@ function FlipCard({ index, text }: { index: number; text: string }) {
       <div className="flex items-start gap-3">
         <span className="text-2xl group-hover:animate-heartbeat shrink-0">💗</span>
         <div className="min-w-0">
-          <p className="text-xs uppercase tracking-widest text-muted-foreground">Reason #{index + 1}</p>
+          <p className="text-xs uppercase tracking-widest text-muted-foreground">
+            Reason #{index + 1}
+          </p>
           <AnimatePresence mode="wait">
             {open ? (
               <motion.p
@@ -546,7 +560,6 @@ function LoveExperience() {
       </div>
 
       <main className="relative z-10 max-w-4xl mx-auto px-5 sm:px-6 py-14 sm:py-20 space-y-28 sm:space-y-36">
-
         {/* HERO */}
         <motion.section
           initial={{ opacity: 0, y: 30 }}
@@ -554,13 +567,15 @@ function LoveExperience() {
           transition={{ duration: 1 }}
           className="text-center space-y-6"
         >
-          <p className="font-script text-3xl sm:text-4xl text-rose drift inline-block">hi, betuu 🤍</p>
+          <p className="font-script text-3xl sm:text-4xl text-rose drift inline-block">
+            hi, betuu 🤍
+          </p>
           <h1 className="font-display text-6xl sm:text-8xl text-shimmer leading-[1] tracking-tight">
             Welcome to <br className="sm:hidden" /> your world.
           </h1>
           <p className="text-base sm:text-lg text-foreground/75 max-w-xl mx-auto leading-relaxed">
-            I'm not very good with feelings out loud. So I poured them in here, quietly, one pixel at a time.
-            Take your time. Scroll slowly. Smile often. <br />
+            I'm not very good with feelings out loud. So I poured them in here, quietly, one pixel
+            at a time. Take your time. Scroll slowly. Smile often. <br />
             <span className="font-script text-2xl text-rose">Every inch of this is for you.</span>
           </p>
           <div className="flex justify-center pt-4">
@@ -594,53 +609,59 @@ function LoveExperience() {
               transition={{ duration: 0.9, ease: "easeOut" }}
               className="bg-card border border-border rounded-3xl shadow-soft p-7 sm:p-12 text-left max-w-2xl mx-auto"
             >
-              <p className="font-script text-3xl text-rose">My Riyaa, my betuu, my cutuu, my whole heart —</p>
+              <p className="font-script text-3xl text-rose">
+                My Riyaa, my betuu, my cutuu, my whole heart —
+              </p>
               <div className="mt-6 space-y-5 text-[17px] sm:text-lg leading-[1.85] text-foreground/90 font-display">
                 <p>
-                  If I sat down to write every single feeling you've given me since
-                  31st December 2025, the words would run out long before the feeling ever did.
-                  So I'll just try.
+                  If I sat down to write every single feeling you've given me since 31st December
+                  2025, the words would run out long before the feeling ever did. So I'll just try.
                 </p>
                 <p>
                   You walked up to me in that Airbnb, soft and curious, and asked
                   <em> "apko koi help chaiye?" </em> and something inside me said,
-                  <span className="font-script text-2xl text-rose"> "kyaa merese koi puch raha hai??" </span>
-                  I've been quietly melting ever since. Litti night, the chaos of New Year, Niloufer,
-                  the first long drive on scotty, somewhere between all of it, I lost a small part of myself to you.
-                  Honestly, I never want it back.
+                  <span className="font-script text-2xl text-rose">
+                    {" "}
+                    "kyaa merese koi puch raha hai??"{" "}
+                  </span>
+                  I've been quietly melting ever since. Litti night, the chaos of New Year,
+                  Niloufer, the first long drive on scotty, somewhere between all of it, I lost a
+                  small part of myself to you. Honestly, I never want it back.
                 </p>
                 <p>
-                  Then you went back to Delhi, and our story became a screen.
-                  And still your good morning texts decided my mood. My heart raced every time
-                  your name lit up. I split my office screen just so I wouldn't miss a single
-                  message from you. Mad? Yes. Embarrassed? Not even a little.
+                  Then you went back to Delhi, and our story became a screen. And still your good
+                  morning texts decided my mood. My heart raced every time your name lit up. I split
+                  my office screen just so I wouldn't miss a single message from you. Mad? Yes.
+                  Embarrassed? Not even a little.
                 </p>
                 <p>
-                  One silly typo <em>'bhi' instead of 'nhi'</em> turned into hearing your voice
-                  for the first time on a call. And on 7th Feb when I told you I liked you, you said
-                  <em> "thank you" </em> and I was like kar dia kya galti.
-                  Then on 23rd Feb you said <span className="font-script text-2xl text-rose">"I can't say I like you... because I love you ❤️" </span>
+                  One silly typo <em>'bhi' instead of 'nhi'</em> turned into hearing your voice for
+                  the first time on a call. And on 7th Feb when I told you I liked you, you said
+                  <em> "thank you" </em> and I was like kar dia kya galti. Then on 23rd Feb you said{" "}
+                  <span className="font-script text-2xl text-rose">
+                    "I can't say I like you... because I love you ❤️"{" "}
+                  </span>
                   and I genuinely couldn't believe a girl this gentle, this kind, this beautiful
                   could love a boy like me. I still can't.
                 </p>
                 <p>
                   Mumbai happened. Marine Drive happened. Falling asleep on your lap while the
-                  Mumbai police literally came to wake me up. Losing your iPhone in
-                  an Uber and our first physical date being a police station also happened.
-                  And somehow, every single one of those is one of my favourite memories now.
+                  Mumbai police literally came to wake me up. Losing your iPhone in an Uber and our
+                  first physical date being a police station also happened. And somehow, every
+                  single one of those is one of my favourite memories now.
                 </p>
                 <p>
-                  Then those 10 days in June, in Hyderabad 8th to 18th were quietly the best
-                  ten days of my life. Go-karting with you, taking you to the same place as our
-                  first virtual date but holding your hand this time, our long deep-talk nights.
-                  I don't think I have ever been that completely <em>present</em> with another human.
+                  Then those 10 days in June, in Hyderabad 8th to 18th were quietly the best ten
+                  days of my life. Go-karting with you, taking you to the same place as our first
+                  virtual date but holding your hand this time, our long deep-talk nights. I don't
+                  think I have ever been that completely <em>present</em> with another human.
                 </p>
                 <p>
                   And then you left. And the silence in my room got loud. That's when I really,
-                  really understood. I am not just <em>in</em> love with you, Riyaa. I am made of it now.
-                  I'm not the best at showing it. Sometimes I go quiet, sometimes I don't say
-                  enough, please, never read that as me loving you less. It's the opposite.
-                  You matter so much that I'm scared of saying it wrong.
+                  really understood. I am not just <em>in</em> love with you, Riyaa. I am made of it
+                  now. I'm not the best at showing it. Sometimes I go quiet, sometimes I don't say
+                  enough, please, never read that as me loving you less. It's the opposite. You
+                  matter so much that I'm scared of saying it wrong.
                 </p>
                 <p className="text-rose">
                   So here it is, in writing, where I can't fumble it:
@@ -672,12 +693,15 @@ function LoveExperience() {
                 <button
                   key={i}
                   onClick={() => setActiveStory(i)}
-                  className={`w-full text-left px-4 py-3 rounded-xl border transition ${activeStory === i
-                    ? "bg-primary text-primary-foreground border-primary shadow-card"
-                    : "bg-card hover:bg-blush/50 border-border"
-                    }`}
+                  className={`w-full text-left px-4 py-3 rounded-xl border transition ${
+                    activeStory === i
+                      ? "bg-primary text-primary-foreground border-primary shadow-card"
+                      : "bg-card hover:bg-blush/50 border-border"
+                  }`}
                 >
-                  <p className={`text-[11px] uppercase tracking-widest ${activeStory === i ? "text-primary-foreground/80" : "text-muted-foreground"}`}>
+                  <p
+                    className={`text-[11px] uppercase tracking-widest ${activeStory === i ? "text-primary-foreground/80" : "text-muted-foreground"}`}
+                  >
                     {s.date}
                   </p>
                   <p className="font-display text-base leading-tight mt-0.5">
@@ -699,7 +723,9 @@ function LoveExperience() {
               >
                 <span className="text-5xl mb-3">{story[activeStory].emoji}</span>
                 <p className="font-script text-2xl text-rose">{story[activeStory].date}</p>
-                <h3 className="font-display text-2xl sm:text-3xl mt-1">{story[activeStory].title}</h3>
+                <h3 className="font-display text-2xl sm:text-3xl mt-1">
+                  {story[activeStory].title}
+                </h3>
                 <p className="mt-4 text-foreground/85 leading-relaxed text-[17px]">
                   {story[activeStory].text}
                 </p>
@@ -725,14 +751,16 @@ function LoveExperience() {
         <section className="text-center bg-card/70 backdrop-blur border border-border rounded-3xl py-10 px-6 shadow-card">
           <p className="font-script text-2xl text-rose">in our private dictionary</p>
           <div className="flex flex-wrap justify-center gap-3 mt-5">
-            {["betuu", "cutuu", "Babyyuuu", "my Riyaa", "sara hua chua", "my whole world"].map((n) => (
-              <span
-                key={n}
-                className="px-5 py-2 rounded-full bg-blush/50 border border-rose/30 font-display text-lg text-foreground"
-              >
-                {n}
-              </span>
-            ))}
+            {["betuu", "cutuu", "Babyyuuu", "my Riyaa", "sara hua chua", "my whole world"].map(
+              (n) => (
+                <span
+                  key={n}
+                  className="px-5 py-2 rounded-full bg-blush/50 border border-rose/30 font-display text-lg text-foreground"
+                >
+                  {n}
+                </span>
+              ),
+            )}
           </div>
         </section>
 
@@ -763,13 +791,17 @@ function LoveExperience() {
             <p className="mt-4 font-script text-xl text-rose">okay that's already a lot 🥹</p>
           )}
           {count >= 50 && count < 100 && (
-            <p className="mt-4 font-script text-xl text-rose">my hand hurts but my heart doesn't 💗</p>
+            <p className="mt-4 font-script text-xl text-rose">
+              my hand hurts but my heart doesn't 💗
+            </p>
           )}
           {count >= 100 && count < 250 && (
             <p className="mt-4 font-script text-xl text-rose">see? infinite. told you. ∞</p>
           )}
           {count >= 250 && (
-            <p className="mt-4 font-script text-xl text-rose">okay betuu now go drink some water 🤍</p>
+            <p className="mt-4 font-script text-xl text-rose">
+              okay betuu now go drink some water 🤍
+            </p>
           )}
         </section>
 
@@ -827,9 +859,10 @@ function LoveExperience() {
             for one girl in this whole world · Riyaa 🌸
           </p>
           <p className="text-xs text-center mt-1 text-muted-foreground">
-  © 2026 Unauthorized copying prohibited.<br />
-  Every memory preserved with love by Tanishq for Riya.
-</p>
+            © 2026 Unauthorized copying prohibited.
+            <br />
+            Every memory preserved with love by Tanishq for Riya.
+          </p>
         </footer>
       </main>
     </div>

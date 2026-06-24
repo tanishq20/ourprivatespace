@@ -9,8 +9,7 @@ import {
 } from "@tanstack/react-router";
 import { useEffect, type ReactNode } from "react";
 
-import appCss from "../styles.css?url";
-import { reportLovableError } from "../lib/lovable-error-reporting";
+import { reportError } from "../lib/error-reporting";
 
 function NotFoundComponent() {
   return (
@@ -38,7 +37,7 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   console.error(error);
   const router = useRouter();
   useEffect(() => {
-    reportLovableError(error, { boundary: "tanstack_root_error_component" });
+    reportError(error, { boundary: "tanstack_root_error_component" });
   }, [error]);
 
   return (
@@ -78,32 +77,60 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title: "Riyaa's World 🌸 — a little universe by Tanishq" },
-      { name: "description", content: "A private little universe, hand-built for one girl in this whole world — Riyaa." },
+      {
+        name: "description",
+        content: "A private little universe, hand-built for one girl in this whole world — Riyaa.",
+      },
       { name: "author", content: "Tanishq, with all his heart" },
       { property: "og:title", content: "Riyaa's World 🌸 — a little universe by Tanishq" },
-      { property: "og:description", content: "A private little universe, hand-built for one girl in this whole world — Riyaa." },
+      {
+        property: "og:description",
+        content: "A private little universe, hand-built for one girl in this whole world — Riyaa.",
+      },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
       { name: "twitter:title", content: "Riyaa's World 🌸 — a little universe by Tanishq" },
-      { name: "twitter:description", content: "A private little universe, hand-built for one girl in this whole world — Riyaa." },
-      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/0b970690-8262-47dc-bfc4-cfa793c0a997/id-preview-eb9457c5--b364c703-e091-4c6e-84d9-4644d0de6b38.lovable.app-1782227685312.png" },
-      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/0b970690-8262-47dc-bfc4-cfa793c0a997/id-preview-eb9457c5--b364c703-e091-4c6e-84d9-4644d0de6b38.lovable.app-1782227685312.png" },
+      {
+        name: "twitter:description",
+        content: "A private little universe, hand-built for one girl in this whole world — Riyaa.",
+      },
+      {
+        property: "og:image",
+        content:
+          "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/0b970690-8262-47dc-bfc4-cfa793c0a997/id-preview-eb9457c5--b364c703-e091-4c6e-84d9-4644d0de6b38.lovable.app-1782227685312.png",
+      },
+      {
+        name: "twitter:image",
+        content:
+          "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/0b970690-8262-47dc-bfc4-cfa793c0a997/id-preview-eb9457c5--b364c703-e091-4c6e-84d9-4644d0de6b38.lovable.app-1782227685312.png",
+      },
     ],
     links: [
-      { rel: "stylesheet", href: appCss },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
         rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Caveat:wght@500;700&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap",
+        href: "https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,400&family=Caveat:wght@500;700&display=swap",
       },
     ],
   }),
-  shellComponent: RootShell,
   component: RootComponent,
   notFoundComponent: NotFoundComponent,
   errorComponent: ErrorComponent,
 });
+
+function RootComponent() {
+  const { queryClient } = Route.useRouteContext();
+
+  return (
+    <div>
+      <QueryClientProvider client={queryClient}>
+        {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
+        <Outlet />
+      </QueryClientProvider>
+    </div>
+  );
+}
 
 function RootShell({ children }: { children: ReactNode }) {
   return (
@@ -119,13 +146,4 @@ function RootShell({ children }: { children: ReactNode }) {
   );
 }
 
-function RootComponent() {
-  const { queryClient } = Route.useRouteContext();
-
-  return (
-    <QueryClientProvider client={queryClient}>
-      {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-      <Outlet />
-    </QueryClientProvider>
-  );
-}
+export default Route;
