@@ -28,10 +28,10 @@
   --color-blush: var(--blush);
   --color-gold: var(--gold);
   --color-plum: var(--plum);
-  --font-display: "Merriweather", serif;
-  --font-letter: "Merriweather", serif;
-  --font-script: "Caveat", cursive;
-  --font-body: "Merriweather", serif;
+  --font-display: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+  --font-letter: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-script: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-body: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
 
 :root {
